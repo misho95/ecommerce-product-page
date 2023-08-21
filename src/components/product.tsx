@@ -28,19 +28,19 @@ const Product = () => {
     imgs: [
       {
         id: 0,
-        link: "src/assets/images/image-product-1.jpg",
+        link: "./src/assets/images/image-product-1.jpg",
       },
       {
         id: 1,
-        link: "src/assets/images/image-product-2.jpg",
+        link: "./src/assets/images/image-product-2.jpg",
       },
       {
         id: 2,
-        link: "src/assets/images/image-product-3.jpg",
+        link: "./src/assets/images/image-product-3.jpg",
       },
       {
         id: 3,
-        link: "src/assets/images/image-product-4.jpg",
+        link: "./src/assets/images/image-product-4.jpg",
       },
     ],
   };
