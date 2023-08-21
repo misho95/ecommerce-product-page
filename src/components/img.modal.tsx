@@ -1,5 +1,19 @@
 import ProductImg from "./product.img.component";
 
+interface LinkType {
+  id: number;
+  link: string;
+}
+
+interface PropsType {
+  imgs: LinkType[];
+  imgActive: number;
+  setImgActive: (arg0: number) => void;
+  setShowImgModal: (arg0: boolean) => void;
+  prevImg: () => void;
+  nextImg: () => void;
+}
+
 const ImgModal = ({
   imgs,
   imgActive,
@@ -7,7 +21,7 @@ const ImgModal = ({
   setShowImgModal,
   prevImg,
   nextImg,
-}) => {
+}: PropsType) => {
   return (
     <div
       onClick={() => setShowImgModal(false)}

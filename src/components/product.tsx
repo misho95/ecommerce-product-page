@@ -10,35 +10,48 @@ const Product = () => {
   const cartTotal = shoppingCart((state) => state.cart);
   const addInCart = shoppingCart((state) => state.addNewItemInCart);
 
+  interface ItemType {
+    id: number;
+    name: string;
+    img: string;
+    quantity: number;
+    price: number;
+  }
+
   const productData = {
     id: 1,
-    name: "SAMBA ORIGINALS",
-    company: "ADIDAS",
-    des: ` Born on the pitch, the Samba is a timeless icon of street style. This
-    silhouette stays true to its legacy with a tasteful, low-profile, soft
-    leather upper, suede overlays and gum sole, making it a staple in
-    everyone's closet - on and off the pitch.`,
+    name: "Fall Limited Edition Sneakers",
+    company: "Sneaker Company",
+    des: `These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.`,
     price: 125,
     dis: 50,
     fullPrice: 250,
     imgs: [
       {
         id: 0,
-        link: "src/assets/imgs/1.avif",
+        link: "src/assets/images/image-product-1.jpg",
       },
       {
         id: 1,
-        link: "src/assets/imgs/2.avif",
+        link: "src/assets/images/image-product-2.jpg",
       },
       {
         id: 2,
-        link: "src/assets/imgs/3.avif",
+        link: "src/assets/images/image-product-3.jpg",
       },
       {
         id: 3,
-        link: "src/assets/imgs/4.avif",
+        link: "src/assets/images/image-product-4.jpg",
       },
     ],
+  };
+
+  const dataSent = {
+    id: 1,
+    name: "SAMBA ORIGINALS",
+    img: "src/assets/images/image-product-1.jpg",
+    quantity: productNum,
+    price: 125,
   };
 
   const decrease = () => {
@@ -47,18 +60,18 @@ const Product = () => {
     }
   };
 
-  const addItemInCart = (obj) => {
+  const addItemInCart = (obj: ItemType) => {
     if (productNum === 0) {
       return;
     }
 
-    const findWithID = cartTotal.find((c) => {
+    const findWithID = cartTotal.find((c: ItemType) => {
       if (c.id === obj.id) {
         return c;
       }
     });
 
-    const updated = cartTotal.map((c) => {
+    const updated = cartTotal.map((c: ItemType) => {
       if (c.id === findWithID.id) {
         return { ...c, quantity: c.quantity + productNum };
       } else {
@@ -111,20 +124,20 @@ const Product = () => {
         <div className="w-fit h-fit relative">
           <div
             onClick={prevImg}
-            className="bg-gray-200 w-6 h-6 p-1 rounded-full flex sm:hidden items-center justify-center absolute left-2 top-1/2 -translate-y-1/2 shadow-sm text-gray-700"
+            className="bg-gray-200 w-6 h-6 p-1 rounded-full flex sm:hidden items-center justify-center absolute left-2 top-1/2 -translate-y-1/2 shadow-sm text-gray-700 cursor-pointer"
           >
-            <span className="material-symbols-outlined text-sm select-none">
+            <span className="material-symbols-outlined text-sm select-none ">
               arrow_back_ios
             </span>
           </div>
           <img
             src={productData.imgs[imgActive].link}
-            className="w-full sm:w-128 rounded-lg"
+            className="w-full sm:w-72 lg:w-128 rounded-lg cursor-pointer"
             onClick={imgFullScreen}
           />
           <div
             onClickCapture={nextImg}
-            className="bg-gray-200 w-6 h-6 p-1 rounded-full flex sm:hidden items-center justify-center absolute right-2 top-1/2 -translate-y-1/2 shadow-sm text-gray-700"
+            className="bg-gray-200 w-6 h-6 p-1 rounded-full flex sm:hidden items-center justify-center absolute right-2 top-1/2 -translate-y-1/2 shadow-sm text-gray-700 cursor-pointer"
           >
             <span className="material-symbols-outlined text-sm select-none">
               arrow_forward_ios
@@ -159,7 +172,7 @@ const Product = () => {
           </p>
           <p className="text-gray-500 line-through">${productData.fullPrice}</p>
         </div>
-        <div className="w-full flex justify-between">
+        <div className="w-full flex justify-between gap-3">
           <div className="flex items-center">
             <button
               onClick={decrease}
@@ -178,16 +191,8 @@ const Product = () => {
             </button>
           </div>
           <button
-            onClick={() =>
-              addItemInCart({
-                id: 1,
-                name: "SAMBA ORIGINALS",
-                img: "src/assets/imgs/1.avif",
-                quantity: productNum,
-                price: 125,
-              })
-            }
-            className="bg-orange-500 px-10 py-1 rounded-md text-white"
+            onClick={() => addItemInCart(dataSent)}
+            className="bg-orange-500 px-10 py-1 rounded-md text-white flex gap-3 items-center"
           >
             Add To Cart
           </button>

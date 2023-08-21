@@ -1,4 +1,8 @@
-const HeaderLink = ({ name }) => {
+interface PropsType {
+  name: string;
+}
+
+const HeaderLink = ({ name }: PropsType) => {
   return (
     <a
       href="#"
