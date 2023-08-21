@@ -7,7 +7,6 @@ const Product = () => {
   const [productNum, setProductNum] = useState<number>(0);
   const [imgActive, setImgActive] = useState<number>(0);
   const [showImgModal, setShowImgModal] = useState<boolean>(false);
-  const cartTotal = shoppingCart((state) => state.cart);
   const addInCart = shoppingCart((state) => state.addNewItemInCart);
 
   interface ItemType {
@@ -65,25 +64,7 @@ const Product = () => {
       return;
     }
 
-    const findWithID = cartTotal.find((c: ItemType) => {
-      if (c.id === obj.id) {
-        return c;
-      }
-    });
-
-    const updated = cartTotal.map((c: ItemType) => {
-      if (c.id === findWithID.id) {
-        return { ...c, quantity: c.quantity + productNum };
-      } else {
-        return c;
-      }
-    });
-
-    if (findWithID) {
-      addInCart(updated);
-    } else {
-      addInCart([...cartTotal, obj]);
-    }
+    addInCart(obj);
 
     setProductNum(0);
   };
