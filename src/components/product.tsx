@@ -2,6 +2,10 @@ import { useState } from "react";
 import ProductImg from "./product.img.component";
 import { shoppingCart } from "../zustand";
 import ImgModal from "./img.modal";
+import imageProduct1 from "../assets/images/image-product-1.jpg";
+import imageProduct2 from "../assets/images/image-product-2.jpg";
+import imageProduct3 from "../assets/images/image-product-3.jpg";
+import imageProduct4 from "../assets/images/image-product-4.jpg";
 
 const Product = () => {
   const [productNum, setProductNum] = useState<number>(0);
@@ -28,19 +32,19 @@ const Product = () => {
     imgs: [
       {
         id: 0,
-        link: "./src/assets/images/image-product-1.jpg",
+        link: imageProduct1,
       },
       {
         id: 1,
-        link: "./src/assets/images/image-product-2.jpg",
+        link: imageProduct2,
       },
       {
         id: 2,
-        link: "./src/assets/images/image-product-3.jpg",
+        link: imageProduct3,
       },
       {
         id: 3,
-        link: "./src/assets/images/image-product-4.jpg",
+        link: imageProduct4,
       },
     ],
   };
@@ -48,7 +52,7 @@ const Product = () => {
   const dataSent = {
     id: 1,
     name: "SAMBA ORIGINALS",
-    img: "src/assets/images/image-product-1.jpg",
+    img: imageProduct1,
     quantity: productNum,
     price: 125,
   };

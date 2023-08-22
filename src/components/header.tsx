@@ -2,6 +2,7 @@ import HeaderLink from "./headerLink";
 import SlideMenuComponent from "./slide.menu";
 import { ShowCart, SlideMenu, shoppingCart } from "../zustand";
 import CartComponent from "./cart.component";
+import avatarImg from "../assets/images/image-avatar.png";
 
 interface ItemType {
   id: number;
@@ -64,7 +65,7 @@ const Header = () => {
             {showCart && <CartComponent />}
           </div>
           <img
-            src={"src/assets/images/image-avatar.png"}
+            src={avatarImg}
             className="h-6 sm:h-8 w-6 sm:w-8 rounded-full object-cover cursor-pointer"
           />
         </div>
